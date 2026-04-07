@@ -2,21 +2,21 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: zomato
-  name: zomato-deploy
+    app: netflix
+  name: netflix-deploy
 spec:
-  replicas: 10
+  replicas: 4
   selector:
     matchLabels:
-      app: zomato
+      app: netflix
   template:
     metadata:
       labels:
-        app: zomato
+        app: netflix
     spec:
       containers:
       - name: cont1
-        image: rahamshaik/image:v1
+        image: kaushik9n/netflix:v1
         ports:
           - containerPort: 8080
 ---
@@ -27,7 +27,7 @@ metadata:
 spec:
   type: NodePort
   selector:
-    app: zomato
+    app: netflix
   ports:
     - port: 8080
       nodePort: 31111
